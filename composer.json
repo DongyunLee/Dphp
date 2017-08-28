@@ -1,0 +1,12 @@
+{
+    "require": {
+        "php": ">=7.0",
+        "nikic/fast-route": "^1.2"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
