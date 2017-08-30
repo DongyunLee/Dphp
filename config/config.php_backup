@@ -1,0 +1,41 @@
+<?php
+
+/**
+* 主配置文件
+* config.php - Dphp
+* User: lidongyun@shuwang-tech.com
+* Date: 2017/8/30
+*/
+
+class DConf
+{
+    public $dEReport = 30719;
+    public $dSession = TRUE;
+    
+    public function __construct() {
+        $this->dEr($this->dEReport);
+        $this->dSe($this->dSession);
+    }
+    
+    /**
+    * 错误报告等级
+    * @return void
+    */
+    protected function dEr($dEReport)
+    {
+        error_reporting($dEReport);
+    }
+    
+    protected function dSe($dSession)
+    {
+        if($dSession){
+            session_start();
+        }else{
+            session_destroy();
+            session_unset();
+        }
+    }
+    
+}
+$dconf = new DConf;
+$GLOBALS['dconf'] = $dconf;

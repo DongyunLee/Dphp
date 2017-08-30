@@ -1,4 +1,6 @@
 {
+    "name": "Dphp",
+    "description": "DoyleafPHP,A framework for PHP,by doylee and leaf",
     "require": {
         "php": ">=7.0",
         "nikic/fast-route": "^1.2"
@@ -8,5 +10,14 @@
             "type": "composer",
             "url": "https://packagist.phpcomposer.com"
         }
+    },
+    "autoload": {
+        "classmap": [
+            "core/Dphp/controllers",
+            "core/Dphp/models"
+        ]
+    },
+    "config": {
+        "vendor-dir": "core/vendor"
     }
 }
