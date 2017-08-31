@@ -27,6 +27,7 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
     public static $classMap = array (
         'Controller' => __DIR__ . '/../../..' . '/core/Dphp/controllers/Controller.class.php',
         'HomeController' => __DIR__ . '/../../..' . '/core/Dphp/controllers/HomeController.class.php',
+        'Model' => __DIR__ . '/../../..' . '/core/Dphp/models/Model.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

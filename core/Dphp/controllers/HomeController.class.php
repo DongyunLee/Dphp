@@ -15,9 +15,9 @@ class HomeController extends Controller
         echo "hello,Dphp!";
     }
 
-    public function actionDF()
+    public function actionDbConnect()
     {
-       echo "DF";
+       Model::connect();
     }
 
 }

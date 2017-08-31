@@ -8,4 +8,5 @@ $baseDir = dirname(dirname($vendorDir));
 return array(
     'Controller' => $baseDir . '/core/Dphp/controllers/Controller.class.php',
     'HomeController' => $baseDir . '/core/Dphp/controllers/HomeController.class.php',
+    'Model' => $baseDir . '/core/Dphp/models/Model.class.php',
 );

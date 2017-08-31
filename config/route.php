@@ -8,10 +8,10 @@
 
 // 配置路由
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->get("/[/]", 'Home/index');
-    $r->get("/{app}[/]", "app");
-    $r->get("/{app}/{class}[/]", "class");
-    $r->get("/{app}/{class}/{action}[/]", "action");
+    $r->get("/", 'Home/index');
+    $r->get("/{app}", "app");
+    $r->get("/{app}/{class}", "class");
+    $r->get("/{app}/{class}/{action}", "action");
 });
 
 // 获取http传参方式和URI
@@ -27,6 +27,7 @@ if (false !== $pos = strpos($uri, '?')) {
 $uri = rawurldecode($uri);
 
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
         header("Location:/errors/404.html");
@@ -48,9 +49,7 @@ switch ($routeInfo[0]) {
             $$key = $value;
         }
     }
-    $class = ucfirst(!isset($class) ? "Home" : $class )."Controller";
-    $action = 'action'.join(array_map("ucfirst",!isset($action) ? ["index"] : explode('_',$action)));
-    $result = call_user_func_array(array(new $class, $action), $vars);
+    
     
     break;
 }
