@@ -10,4 +10,8 @@
 **使用 [Packagist / Composer中国全量镜像](https://packagist.phpcomposer.com)**
 > ## 路由
 采用开源的nikic/fast-route路由，这个路由自称是最快的路由。
-> > http://yourdomain.com/app/controller/action
+> yourdomain.com/app/controller/action
+
+> ## 安装方式
+
+> composer create-project doylee/dphp dphp dev-master
