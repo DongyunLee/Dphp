@@ -1,12 +1,14 @@
 <?php
 
 /**
- * \HomeController
+ * controllers\HomeController
  * HomeController.class.php - Dphp
  *
  * User: lidongyun@shuwang-tech.com
  * Date: 2017/8/30
  */
+
+namespace Controllers;
 
 class HomeController extends Controller
 {

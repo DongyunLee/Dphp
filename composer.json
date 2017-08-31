@@ -18,10 +18,11 @@
         }
     },
     "autoload": {
-        "classmap": [
-            "core/Dphp/controllers",
-            "core/Dphp/models"
-        ]
+        "psr-4": {
+            "Controllers\\": "core/Dphp/controllers/",
+            "Models\\": "core/Dphp/models/",
+            "App\\": "app/"
+        }
     },
     "config": {
         "vendor-dir": "core/vendor"

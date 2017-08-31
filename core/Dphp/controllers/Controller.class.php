@@ -6,9 +6,10 @@
 * Date: 2017/8/30
 */
 
+namespace Controllers;
+
 class Controller
 {
-
     public $dfun;
 
     public function __construct()

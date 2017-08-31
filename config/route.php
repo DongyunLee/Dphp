@@ -8,7 +8,7 @@
 
 // 配置路由
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->get("/[/]", 'Home/index');
+    $r->get("/[/]", 'Index/index');
     $r->get("/{app}[/]", "app");
     $r->get("/{app}/{class}[/]", "class");
     $r->get("/{app}/{class}/{action}[/]", "action");
@@ -43,14 +43,15 @@ switch ($routeInfo[0]) {
         // 通过$vars调用$handler
         if (empty($vars)) {
             list($class, $action) = explode("/", $handler, 2);
-    } else {
-        foreach ($vars as $key => $value) {
-            $$key = $value;
+        } else {
+            foreach ($vars as $key => $value) {
+                $$key = $value;
+            }
         }
-    }
-    $class = ucfirst(!isset($class) ? "Home" : $class )."Controller";
-    $action = 'action'.join(array_map("ucfirst",!isset($action) ? ["index"] : explode('_',$action)));
-    $result = call_user_func_array(array(new $class, $action), $vars);
-    
-    break;
+        $app = "App\\".ucfirst(!isset($app)?"Index":$app).'\\controller\\';
+        $class = $app.ucfirst(!isset($class) ? "Index" : $class )."Controller";
+        $action = 'action'.join(array_map("ucfirst",!isset($action) ? ["index"] : explode('_',$action)));
+        call_user_func_array(array(new $class, $action), $vars);
+        
+        break;
 }
