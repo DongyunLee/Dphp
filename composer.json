@@ -1,10 +1,16 @@
 {
-    "name": "Dphp",
-    "description": "DoyleafPHP,A framework for PHP,by doylee and leaf",
+    "name": "doylee/dphp",
+    "description": "DoyleafPHP,A Framework for PHP,By Doylee and Leaf",
+    "type": "project",
     "require": {
         "php": ">=7.0",
         "nikic/fast-route": "^1.2"
     },
+    "license": "MPL-2.0",
+    "authors": [{
+        "name": "doylee",
+        "email": "dongyunli619@gmail.com"
+    }],
     "repositories": {
         "packagist": {
             "type": "composer",

@@ -8,21 +8,26 @@
 
 class Model
 {
-    public static function connection()
+    public function __construct($host,$db,$charset,$user,$pass) {
+        
+    }
+
+    /**
+     * D-Model-OnLine
+     * 即连接数据库操作
+     * @return void
+     */
+    public static function dMol()
     {
-        /* $user = 'root';
+        $user = 'root';
         $pass = '';
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=dphp', $user, $pass,array(
-                PDO::ATTR_PERSISTENT => true
-            ));
-            foreach($dbh->query('SELECT * from FOO') as $row) {
-                print_r($row);
-            }
+            $dsn = 'mysql:host=localhost;dbname=dphp;charset=UTF8MB4';
+            // 建立了长连接
+            $dbh = new PDO($dsn, $user, $pass, [PDO::ATTR_PERSISTENT => true]);
         } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
+            echo "Error!: " . $e->getMessage() . "<br/>";
             return;
-        } */
-        
+        }
     }
 }

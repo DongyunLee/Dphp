@@ -7,20 +7,19 @@
  * Date: 2017/8/30
  */
 
- class DFun
- {
-     public function __construct() {
-         
-     }
+class DFun
+{
+    public function __construct()
+    {
+    }
 
-     public function dump($params)
-     {
-         
-         echo '<pre>';var_dump($params);echo '</pre>';
-         
-     }
- }
+    public function dump($params)
+    {
+        echo '<pre>';
+        var_dump($params);
+        echo '</pre>';
+    }
+}
 
  $dfun = new DFun;
  $GLOBALS['dfun'] = $dfun;
- 
