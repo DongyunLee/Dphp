@@ -12,6 +12,13 @@
      public function __construct() {
          
      }
+
+     public function dump($params)
+     {
+         
+         echo '<pre>';var_dump($params);echo '</pre>';
+         
+     }
  }
 
  $dfun = new DFun;

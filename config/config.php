@@ -7,7 +7,7 @@
 * Date: 2017/8/30
 */
 
-if (!DUBUG) {
+if (!DEBUG) {
     error_reporting(0);
 }
 
