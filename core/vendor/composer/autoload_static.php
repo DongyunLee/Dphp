@@ -11,23 +11,41 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
     );
 
     public static $prefixLengthsPsr4 = array (
+        'M' => 
+        array (
+            'Models\\' => 7,
+        ),
         'F' => 
         array (
             'FastRoute\\' => 10,
         ),
+        'C' => 
+        array (
+            'Controllers\\' => 12,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/core/Dphp/models',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
-    );
-
-    public static $classMap = array (
-        'Controller' => __DIR__ . '/../../..' . '/core/Dphp/controllers/Controller.class.php',
-        'HomeController' => __DIR__ . '/../../..' . '/core/Dphp/controllers/HomeController.class.php',
-        'Model' => __DIR__ . '/../../..' . '/core/Dphp/models/Model.class.php',
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/core/Dphp/controllers',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/app',
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -35,7 +53,6 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,15 +1,22 @@
 <?php
 
 /**
-* Model.class.php - Dphp
-* User: lidongyun@shuwang-tech.com
-* Date: 2017/8/31
-*/
+ * Model.class.php - Dphp
+ * User: lidongyun@shuwang-tech.com
+ * Date: 2017/8/31
+ */
+
+namespace Models;
+
+use PDO;
+use PDOException;
 
 class Model
 {
-    public function __construct($host,$db,$charset,$user,$pass) {
-        
+
+    public function __construct($host, $db, $charset, $user, $pass)
+    {
+
     }
 
     /**
@@ -30,4 +37,5 @@ class Model
             return;
         }
     }
+
 }
