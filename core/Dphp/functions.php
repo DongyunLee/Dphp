@@ -6,20 +6,21 @@
  * User: lidongyun@shuwang-tech.com
  * Date: 2017/8/30
  */
-
 class DFun
 {
-    public function __construct()
-    {
-    }
 
     public function dump($params)
     {
-        echo '<pre>';
-        var_dump($params);
-        echo '</pre>';
+        if (is_array($params) || is_object($params)) {
+            echo '<pre>';
+            var_dump($params);
+            echo '</pre>';
+        } else {
+            var_dump($params);
+        }
     }
+
 }
 
- $dfun = new DFun;
- $GLOBALS['dfun'] = $dfun;
+$dfun = new DFun;
+$GLOBALS['dfun'] = $dfun;

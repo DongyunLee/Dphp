@@ -25,8 +25,8 @@ if (false !== $pos = strpos($uri, '?')) {
 
 // 对url进行转码
 $uri = rawurldecode($uri);
-
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
         header("Location:/errors/404.html");
@@ -39,18 +39,22 @@ switch ($routeInfo[0]) {
         break;
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
+        
         $vars = $routeInfo[2];
         // 通过$vars调用$handler
         if (empty($vars)) {
-            list($class, $action) = explode("/", $handler, 2);
+            list($class, $action) = explode("/", $handler, 3);
         } else {
             foreach ($vars as $key => $value) {
                 $$key = $value;
             }
         }
         $app = "App\\".ucfirst(!isset($app)?"Index":$app).'\\controller\\';
+        // echo $app.'<br/>';
         $class = $app.ucfirst(!isset($class) ? "Index" : $class )."Controller";
+        // echo $class.'<br/>';
         $action = 'action'.join(array_map("ucfirst",!isset($action) ? ["index"] : explode('_',$action)));
+        // die($action);
         call_user_func_array(array(new $class, $action), $vars);
         
         break;
