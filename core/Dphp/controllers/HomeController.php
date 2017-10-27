@@ -11,6 +11,7 @@
 namespace Controllers;
 
 use Models\Model;
+use Views\View;
 
 class HomeController extends Controller
 {
@@ -19,13 +20,14 @@ class HomeController extends Controller
     {
         parent::__construct();
         echo "<h1 style='text-align:center'>Hello,DoyleafPHP!</h1>";
+        echo "<h2 style='text-align:center'>hello,dphp!</h2>";
     }
 
     public function actionIndex()
     {
-        echo "hello,Dphp!";
+        echo '<h3>' . __METHOD__ . '</h3>';
         $result = Model::dMol();
-        require_once(dirname(__DIR__) . "/views/index.php");
+        $view = View::index();
     }
 
 }

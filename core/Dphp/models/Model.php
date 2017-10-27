@@ -26,6 +26,7 @@ class Model
      */
     public static function dMol()
     {
+        echo '<h3>' . __METHOD__ . '</h3>';
         $user = 'root';
         $pass = '';
         try {

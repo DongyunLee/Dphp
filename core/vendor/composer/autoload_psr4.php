@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname(dirname($vendorDir));
 
 return array(
+    'Views\\' => array($baseDir . '/core/Dphp/views'),
     'Models\\' => array($baseDir . '/core/Dphp/models'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Controllers\\' => array($baseDir . '/core/Dphp/controllers'),
