@@ -16,7 +16,7 @@ class Model
 
     public function __construct($host, $db, $charset, $user, $pass)
     {
-
+        
     }
 
     /**
@@ -26,7 +26,6 @@ class Model
      */
     public static function dMol()
     {
-        echo '<h3>' . __METHOD__ . '</h3>';
         $user = 'root';
         $pass = '';
         try {
@@ -37,6 +36,7 @@ class Model
             echo "Error!: " . $e->getMessage() . "<br/>";
             return;
         }
+        return $dbh;
     }
 
 }

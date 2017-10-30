@@ -6,8 +6,5 @@
  * Date: 2017/8/30
  */
 
- class CoreConf extends DConf 
- {
-     
- }
+
  
