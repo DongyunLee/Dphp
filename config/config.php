@@ -12,3 +12,5 @@ if (!DEBUG) {
 }
 
 // session_start();
+
+require_once(ROOT.'/core/Dphp/config.php');

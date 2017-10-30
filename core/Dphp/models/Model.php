@@ -16,7 +16,7 @@ class Model
 
     public function __construct($host, $db, $charset, $user, $pass)
     {
-
+        
     }
 
     /**
@@ -36,6 +36,7 @@ class Model
             echo "Error!: " . $e->getMessage() . "<br/>";
             return;
         }
+        return $dbh;
     }
 
 }

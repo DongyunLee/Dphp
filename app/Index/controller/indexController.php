@@ -8,7 +8,13 @@ class IndexController extends HomeController
 {
     public function actionIndex()
     {
-        parent::actionIndex();
+        // echo "hello,world!";
+        $titles = ['title1'=>'DoyleafPHP！','title2'=>'dphp'];
+
+        $this->assign($titles);
+        $this->assign('content','Hello,Dphp');
+
+        $this->display();
     }
     
 }

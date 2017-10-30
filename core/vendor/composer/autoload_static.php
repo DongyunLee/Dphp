@@ -11,6 +11,10 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'Views\\' => 6,
+        ),
         'M' => 
         array (
             'Models\\' => 7,
@@ -30,6 +34,10 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
     );
 
     public static $prefixDirsPsr4 = array (
+        'Views\\' => 
+        array (
+            0 => __DIR__ . '/../../..' . '/core/Dphp/views',
+        ),
         'Models\\' => 
         array (
             0 => __DIR__ . '/../../..' . '/core/Dphp/models',

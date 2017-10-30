@@ -10,7 +10,7 @@
 
 namespace Controllers;
 
-use Models\Model;
+use Views\View;
 
 class HomeController extends Controller
 {
@@ -18,14 +18,18 @@ class HomeController extends Controller
     public function __construct()
     {
         parent::__construct();
-        echo "<h1 style='text-align:center'>Hello,DoyleafPHP!</h1>";
     }
 
     public function actionIndex()
     {
-        echo "hello,Dphp!";
-        $result = Model::dMol();
-        require_once(dirname(__DIR__) . "/views/index.php");
+        $sql = "SELECT * FROM foo";
+        $result = $this->dMol->query($sql);
+        $array = $result->fetchAll();
+        foreach ($array as $key => $value) {
+            dump($value);
+        }
+        echo '<code>' . __METHOD__ . '</code>';
+        // $view = View::index();
     }
 
 }
