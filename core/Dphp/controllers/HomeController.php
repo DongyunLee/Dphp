@@ -25,6 +25,9 @@ class HomeController extends Controller
 
     public function actionIndex()
     {
+        foreach ($this as $key => $value) {
+            var_dump($key.'=>'.$value.'<br/>');
+        }
         echo '<h3>' . __METHOD__ . '</h3>';
         $result = Model::dMol();
         $view = View::index();
