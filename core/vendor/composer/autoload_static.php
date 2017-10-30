@@ -27,10 +27,6 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
         array (
             'Controllers\\' => 12,
         ),
-        'A' => 
-        array (
-            'App\\' => 4,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -50,10 +46,10 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
         array (
             0 => __DIR__ . '/../../..' . '/core/Dphp/controllers',
         ),
-        'App\\' => 
-        array (
-            0 => __DIR__ . '/../../..' . '/app',
-        ),
+    );
+
+    public static $classMap = array (
+        'App\\Index\\controller\\IndexController' => __DIR__ . '/../../..' . '/app/Index/controller/indexController.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -61,6 +57,7 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe::$classMap;
 
         }, null, ClassLoader::class);
     }

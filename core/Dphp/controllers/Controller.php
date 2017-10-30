@@ -32,7 +32,8 @@ class Controller
      */
     public function dMol()
     {
-        return Model::dMol();
+        $model = new Model;
+        return $model->dMol();
     }
 
     /**

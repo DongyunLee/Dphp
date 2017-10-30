@@ -11,6 +11,4 @@ if (!DEBUG) {
     error_reporting(0);
 }
 
-// session_start();
-
-require_once(ROOT.'/core/Dphp/config.php');
+session_start();

@@ -25,17 +25,17 @@ class View
      */
     public static function display($templete, $app)
     {
-        // echo "<h3>" . __METHOD__ . "</h3>";
+        // 读取自定义的模板文件
         $templeteContent = htmlspecialchars(file_get_contents(APP.'/'.$app.'/view/'.$templete.'.html'));
         $tempConReplace = $templeteContent;
-        // dump(self::$params);die;
+
+        // 绑定变量
         foreach (self::$params as $key => $value) {
             $tempConReplace = str_replace('{$'.$key.'}', $value, $tempConReplace);
         }
         $tempConReplace_new = htmlspecialchars_decode($tempConReplace);
 
-        // $rand = time();
-        // $cache_fileName = CACHE."/{$app}_{$templete}.html_{$rand}.php";
+        // 写入缓存文件
         $cache_fileName = CACHE."/{$app}_{$templete}.html";
         file_put_contents($cache_fileName,$tempConReplace_new);
 

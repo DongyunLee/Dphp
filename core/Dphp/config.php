@@ -6,5 +6,6 @@
  * Date: 2017/8/30
  */
 
-
- 
+include_once(CONF.'/config.php');
+require_once(CONF.'/db.php');
+$GLOBALS['db'] = $db;
