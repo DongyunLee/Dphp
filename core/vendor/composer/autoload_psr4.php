@@ -10,5 +10,4 @@ return array(
     'Models\\' => array($baseDir . '/core/Dphp/models'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Controllers\\' => array($baseDir . '/core/Dphp/controllers'),
-    'App\\' => array($baseDir . '/app'),
 );

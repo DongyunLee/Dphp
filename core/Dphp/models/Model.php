@@ -13,10 +13,21 @@ use PDOException;
 
 class Model
 {
+    public static $user;
+    public static $pass;
+    public static $host;
+    public static $db_name;
+    public static $charset;
+    public static $db;
 
-    public function __construct($host, $db, $charset, $user, $pass)
+    public function __construct()
     {
-
+        self::$user = $GLOBALS['db']['user'];
+        self::$pass = $GLOBALS['db']['pass'];
+        self::$host = $GLOBALS['db']['host'];
+        self::$db_name = $GLOBALS['db']['db_name'];
+        self::$charset = $GLOBALS['db']['charset'];
+        self::$db = $GLOBALS['db']['db'];
     }
 
     /**
@@ -26,17 +37,15 @@ class Model
      */
     public static function dMol()
     {
-        echo '<h3>' . __METHOD__ . '</h3>';
-        $user = 'root';
-        $pass = '';
         try {
-            $dsn = 'mysql:host=localhost;dbname=dphp;charset=UTF8MB4';
+            $dsn = self::$db.':host='.self::$host.';dbname='.self::$db_name.';charset='.self::$charset;
             // 建立了长连接
-            $dbh = new PDO($dsn, $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+            $dbh = new PDO($dsn, self::$user, self::$pass, [PDO::ATTR_PERSISTENT => true]);
         } catch (PDOException $e) {
             echo "Error!: " . $e->getMessage() . "<br/>";
             return;
         }
+        return $dbh;
     }
 
 }

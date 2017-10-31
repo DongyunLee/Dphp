@@ -21,9 +21,13 @@
         "psr-4": {
             "Controllers\\": "core/Dphp/controllers/",
             "Models\\": "core/Dphp/models/",
-            "Views\\":"core/Dphp/views/",
-            "App\\": "app/"
-        }
+            "Views\\":"core/Dphp/views/"
+        },
+        "classmap": [
+            "app/"
+        ]
+          
+        
     },
     "config": {
         "vendor-dir": "core/vendor"
