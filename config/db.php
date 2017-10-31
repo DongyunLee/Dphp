@@ -8,7 +8,7 @@
 
  $db = [
     "user" => 'root',
-    'pass' => 'root',
+    'pass' => '',
     'db'   => 'mysql',
     'host' => 'localhost',
     'db_name'=>'dphp',

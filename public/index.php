@@ -17,9 +17,8 @@ define("CONF", ROOT . '/config');
 define('CORE', ROOT . '/core');
 define("VENDOR", CORE . '/vendor');
 define("DPHP", CORE . '/Dphp');
-define('PUB', str_replace('\\','/',__DIR__));
+define('PUB', ROOT.'/public');
 define('CACHE', PUB.'/caches');
-// echo CACHE;die;
 
 // 加载composer自动加载文件
 require_once(VENDOR . '/autoload.php');

@@ -35,17 +35,27 @@ class Model
      * 即连接数据库操作
      * @return void
      */
-    public static function dMol()
+    public function dMol()
     {
+        
         try {
-            $dsn = self::$db.':host='.self::$host.';dbname='.self::$db_name.';charset='.self::$charset;
-            // 建立了长连接
-            $dbh = new PDO($dsn, self::$user, self::$pass, [PDO::ATTR_PERSISTENT => true]);
+            $dbh = self::Connection();
         } catch (PDOException $e) {
-            echo "Error!: " . $e->getMessage() . "<br/>";
+            if (DEBUG) {
+                echo "Error!: " . $e->getMessage() . "<br/>";
+            } else {
+                header("Location:/errors/404.html");
+            }
             return;
         }
         return $dbh;
     }
 
+    private static function Connection()
+    {
+        $dsn = self::$db.':host='.self::$host.';dbname='.self::$db_name.';charset='.self::$charset;
+        // 建立了长连接
+        $dbh = new PDO($dsn, self::$user, self::$pass, [PDO::ATTR_PERSISTENT => true]);
+        return $dbh;
+    }
 }

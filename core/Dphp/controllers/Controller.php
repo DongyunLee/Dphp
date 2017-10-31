@@ -61,6 +61,15 @@ class Controller
         $params = empty($params) ? $name : $params ;
         \Views\View::assign($name,$params);
     }
+
+    protected function redirect(string $handler)
+    {
+        if (is_file($handler)) {
+            header("Location:{$handler}");
+        }else {
+            header("Location:/errors/404.html");
+        }
+    }
     
     
 }
