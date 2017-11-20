@@ -29,5 +29,8 @@ require_once(DPHP . '/functions.php');
 // 加载配置文件
 require_once(DPHP . '/config.php');
 
+// 加载WAF
+require_once(DPHP.'/waf.php');
+
 // 加载调用了fast-route的route配置文件
 require_once(CONF . '/route.php');

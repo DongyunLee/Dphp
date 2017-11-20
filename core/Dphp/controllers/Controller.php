@@ -62,6 +62,11 @@ class Controller
         \Views\View::assign($name,$params);
     }
 
+    /**
+     * 重定向  
+     * @param string $handler
+     * @return void
+     */
     protected function redirect(string $handler)
     {
         if (is_file($handler)) {
