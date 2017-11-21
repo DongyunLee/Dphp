@@ -23,9 +23,6 @@ define('CACHE', PUB . '/caches');
 // 加载composer自动加载文件
 require_once(VENDOR . '/autoload.php');
 
-// 加载主方法库
-require_once(DPHP . '/functions.php');
-
 // 加载配置文件
 require_once(DPHP . '/config.php');
 

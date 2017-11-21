@@ -26,6 +26,9 @@
         },
         "classmap": [
             "app/"
+        ],
+        "files": [
+            "core/Dphp/functions.php"
         ]
           
         
