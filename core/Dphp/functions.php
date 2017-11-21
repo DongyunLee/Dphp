@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 主方法文件
+ * 主函数库
  * functions.php - Dphp
  * User: lidongyun@shuwang-tech.com
  * Date: 2017/8/30
@@ -49,17 +49,17 @@ function dd($params)
  * @param mixed  $scope
  * @return void
  */
-function get_variable_name(&$var, $scope = NULL) {
+function get_variable_name(&$var, $scope = NULL)
+{
     if (NULL == $scope) {
         $scope = $GLOBALS;
     }
-    $tmp  = $var;
-    $var   = "tmp_exists_" . mt_rand();
+    $tmp = $var;
+    $var = "tmp_exists_" . mt_rand();
     $name = array_search($var, $scope, TRUE);
-    $var   = $tmp;
+    $var = $tmp;
     return $name;
 }
-
 
 // $dfun = new DFun;
 // $GLOBALS['dfun'] = $dfun;

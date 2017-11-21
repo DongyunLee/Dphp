@@ -50,6 +50,27 @@ class ComposerStaticInitbe8df792005ff14b8db14780ad2a06fe
 
     public static $classMap = array (
         'App\\Index\\controller\\IndexController' => __DIR__ . '/../../..' . '/app/Index/controller/indexController.php',
+        'WAFPHP\\Common\\Common' => __DIR__ . '/..' . '/doylee/wafphp/Common/Common.class.php',
+        'WAFPHP\\Lib\\Library\\Challenge\\BaseChallenge' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Library/Challenge/BaseChallenge.class.php',
+        'WAFPHP\\Lib\\Library\\Challenge\\ChineseVerifyCodeChallenge' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Library/Challenge/ChineseVerifyCodeChallenge.class.php',
+        'WAFPHP\\Lib\\Library\\Challenge\\JsChallenge' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Library/Challenge/JsChallenge.class.php',
+        'WAFPHP\\Lib\\Library\\Challenge\\ProofOfWorkChallenge' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Library/Challenge/ProofOfWorkChallenge.class.php',
+        'WAFPHP\\Lib\\Library\\Challenge\\VerifyCodeChallenge' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Library/Challenge/VerifyCodeChallenge.class.php',
+        'WAFPHP\\Lib\\Log\\Log' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Log/Log.class.php',
+        'WAFPHP\\Lib\\Model\\Memcache' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Model/Memcache.class.php',
+        'WAFPHP\\Lib\\Model\\Model' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Model/Model.class.php',
+        'WAFPHP\\Lib\\Model\\ModelException' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Model/Model.class.php',
+        'WAFPHP\\Lib\\Model\\ModelInterface' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Model/ModelInterface.class.php',
+        'WAFPHP\\Lib\\Model\\Redis' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Model/Redis.class.php',
+        'WAFPHP\\Lib\\Waf\\Mysql' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Waf/Mysql.class.php',
+        'WAFPHP\\Lib\\Waf\\Robot' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Waf/Robot.class.php',
+        'WAFPHP\\Lib\\Waf\\Upload' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Waf/Upload.class.php',
+        'WAFPHP\\Lib\\Waf\\Waf' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Waf/Waf.class.php',
+        'WAFPHP\\Lib\\Waf\\WafInterface' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Waf/WafInterface.class.php',
+        'WAFPHP\\Lib\\Waf\\Xss' => __DIR__ . '/..' . '/doylee/wafphp/Lib/Waf/Xss.class.php',
+        'WAFPHP\\UnRegisterCallback' => __DIR__ . '/..' . '/doylee/wafphp/WAFPHP.php',
+        'WAFPHP\\WAFPHP' => __DIR__ . '/..' . '/doylee/wafphp/WAFPHP.php',
+        'WAFPHP\\WAFPHPException' => __DIR__ . '/..' . '/doylee/wafphp/WAFPHP.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

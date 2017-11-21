@@ -13,6 +13,7 @@ use PDOException;
 
 class Model
 {
+
     public static $user;
     public static $pass;
     public static $host;
@@ -22,12 +23,12 @@ class Model
 
     public function __construct()
     {
-        self::$user = $GLOBALS['db']['user'];
-        self::$pass = $GLOBALS['db']['pass'];
-        self::$host = $GLOBALS['db']['host'];
-        self::$db_name = $GLOBALS['db']['db_name'];
-        self::$charset = $GLOBALS['db']['charset'];
-        self::$db = $GLOBALS['db']['db'];
+        self::$user = $GLOBALS['config']['db']['user'];
+        self::$pass = $GLOBALS['config']['db']['pass'];
+        self::$host = $GLOBALS['config']['db']['host'];
+        self::$db_name = $GLOBALS['config']['db']['db_name'];
+        self::$charset = $GLOBALS['config']['db']['charset'];
+        self::$db = $GLOBALS['config']['db']['db'];
     }
 
     /**
@@ -37,7 +38,7 @@ class Model
      */
     public function dMol()
     {
-        
+
         try {
             $dbh = self::Connection();
         } catch (PDOException $e) {
@@ -53,9 +54,10 @@ class Model
 
     private static function Connection()
     {
-        $dsn = self::$db.':host='.self::$host.';dbname='.self::$db_name.';charset='.self::$charset;
+        $dsn = self::$db . ':host=' . self::$host . ';dbname=' . self::$db_name . ';charset=' . self::$charset;
         // 建立了长连接
         $dbh = new PDO($dsn, self::$user, self::$pass, [PDO::ATTR_PERSISTENT => true]);
         return $dbh;
     }
+
 }

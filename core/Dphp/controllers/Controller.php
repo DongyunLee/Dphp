@@ -1,10 +1,10 @@
 <?php
 
 /**
-* Controller.class.php - Dphp
-* User: lidongyun@shuwang-tech.com
-* Date: 2017/8/30
-*/
+ * Controller.class.php - Dphp
+ * User: lidongyun@shuwang-tech.com
+ * Date: 2017/8/30
+ */
 
 namespace Controllers;
 
@@ -12,6 +12,7 @@ use Models\Model;
 
 class Controller
 {
+
     // public $dfun;
     public $dMol;
 
@@ -20,7 +21,7 @@ class Controller
         // $this->dfun = $GLOBALS['dfun'];
         $this->dMol = $this->dMol();
     }
-    
+
     public function __call($action, $params)
     {
         header("Location:/errors/404.html");
@@ -36,17 +37,22 @@ class Controller
         return $model->dMol();
     }
 
+    private function waf()
+    {
+        require_once '';
+    }
+
     /**
      * 渲染视图
      * @param string $html
      * @param string $app
      * @return void
      */
-    protected function display($html='index',$app='index')
+    protected function display($html = 'index', $app = 'index')
     {
         $templete = strtolower($html);
         $app = ucfirst($app);
-        \Views\View::display($html,$app);
+        \Views\View::display($html, $app);
     }
 
     /**
@@ -56,14 +62,14 @@ class Controller
      * @param mixed  $params
      * @return void
      */
-    protected function assign($name,$params='')
+    protected function assign($name, $params = '')
     {
-        $params = empty($params) ? $name : $params ;
-        \Views\View::assign($name,$params);
+        $params = empty($params) ? $name : $params;
+        \Views\View::assign($name, $params);
     }
 
     /**
-     * 重定向  
+     * 重定向
      * @param string $handler
      * @return void
      */
@@ -71,10 +77,9 @@ class Controller
     {
         if (is_file($handler)) {
             header("Location:{$handler}");
-        }else {
+        } else {
             header("Location:/errors/404.html");
         }
     }
-    
-    
+
 }

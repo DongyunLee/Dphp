@@ -12,15 +12,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DongyunLee/WAFPHP.git",
-                "reference": "fc9bcc4cc0c2199a08d9151e1fe693c6184a94d0"
+                "reference": "315ed1791a15d4dda05a52cb071c418d5623aeb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/DongyunLee/WAFPHP/fc9bcc4cc0c2199a08d9151e1fe693c6184a94d0.zip",
-                "reference": "fc9bcc4cc0c2199a08d9151e1fe693c6184a94d0",
+                "url": "https://files.phpcomposer.com/files/DongyunLee/WAFPHP/315ed1791a15d4dda05a52cb071c418d5623aeb2.zip",
+                "reference": "315ed1791a15d4dda05a52cb071c418d5623aeb2",
                 "shasum": ""
             },
             "type": "library",
+            "autoload": {
+                "classmap": [
+                    "/"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MPL2.0"
@@ -32,7 +37,7 @@
                 }
             ],
             "description": "A php framework for Web Application Firewall.",
-            "time": "2017-11-20T09:50:20+00:00"
+            "time": "2017-11-21T07:20:04+00:00"
         },
         {
             "name": "nikic/fast-route",
