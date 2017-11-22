@@ -32,7 +32,11 @@ $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 
 switch ($routeInfo[0]) {
     case Dispatcher::NOT_FOUND:
-        header("Location:/errors/404.html");
+        if (DEBUG) {
+            die("the curret route format is /app/class/action");
+        } else {
+            header("Location:/errors/404.html");
+        }
         // ... 404 Not Found
         break;
     case Dispatcher::METHOD_NOT_ALLOWED:

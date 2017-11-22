@@ -13,18 +13,21 @@ use Models\Model;
 class Controller
 {
 
-    // public $dfun;
     public $dMol;
 
     public function __construct()
     {
-        // $this->dfun = $GLOBALS['dfun'];
         $this->dMol = $this->dMol();
     }
 
     public function __call($action, $params)
     {
-        header("Location:/errors/404.html");
+        if (DEBUG) {
+            throw new \ErrorException('访问的方法'.$action.'不存在！');
+        } else {
+            header("Location:/errors/404.html");
+        }
+        
     }
 
     /**

@@ -23,12 +23,14 @@ class Model
 
     public function __construct()
     {
-        self::$user = $GLOBALS['config']['db']['user'];
-        self::$pass = $GLOBALS['config']['db']['pass'];
-        self::$host = $GLOBALS['config']['db']['host'];
-        self::$db_name = $GLOBALS['config']['db']['db_name'];
-        self::$charset = $GLOBALS['config']['db']['charset'];
-        self::$db = $GLOBALS['config']['db']['db'];
+        $db = $GLOBALS['config']['db'];
+        
+        self::$user = $db['user'];
+        self::$pass = $db['pass'];
+        self::$host = $db['host'];
+        self::$db_name = $db['db_name'];
+        self::$charset = $db['charset'];
+        self::$db = $db['db'];
     }
 
     /**

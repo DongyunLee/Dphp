@@ -30,4 +30,4 @@ require_once(DPHP . '/config.php');
 require_once(DPHP . '/route.php');
 
 // 加载WAF
-require_once(DPHP . '/waf.php');
+// require_once(DPHP . '/waf.php');
