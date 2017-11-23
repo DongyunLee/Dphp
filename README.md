@@ -1,7 +1,7 @@
 # Dphp
 ### **DoyleafPHP,A framework for PHP,by doylee and leaf**
 ### **一个复古贯彻MVC模式的微型框架**
-
+### **采用GPL3.0开源协议**
 ---
 
 ## 架构模式
@@ -12,8 +12,8 @@
 使用 **[Packagist / Composer中国全量镜像](https://packagist.phpcomposer.com)**
 ## 路由
 采用开源的nikic/fast-route路由，这个路由自称是最快的路由。
-> domain.com/app/controller/action
-
+> yourdomain.com/app/controller/action
+## 入口文件
+>/public/index.php
 ## 安装方式
-
-> composer create-project doylee/dphp dphp dev-master
+> composer create-project doylee/dphp Dphp
