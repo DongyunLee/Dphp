@@ -8,7 +8,7 @@
  */
 
 /**
- * 打印输出
+ * 打印输出，有类型输出
  * @param mixed $params
  * @return void
  */
@@ -26,6 +26,11 @@ function dump($params)
     echo "<hr/>";
 }
 
+/**
+ * 打印输出,无类型输出
+ * @param mixed $params
+ * @return void
+ */
 function dd($params)
 {
     echo '<hr />';
@@ -61,5 +66,11 @@ function get_variable_name(&$var, $scope = NULL)
     return $name;
 }
 
-// $dfun = new DFun;
-// $GLOBALS['dfun'] = $dfun;
+/**
+ * 不存在时的错误处理
+ * @return void
+ */
+function notFound($errno=TRUE, $errstr=TRUE)
+{
+    header("Location:/errors/404.html");
+}

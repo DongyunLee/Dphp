@@ -29,13 +29,13 @@ if (false !== $pos = strpos($uri, '?')) {
 // 对url进行转码
 $uri = rawurldecode($uri);
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-
+// dump($routeInfo);die;
 switch ($routeInfo[0]) {
     case Dispatcher::NOT_FOUND:
         if (DEBUG) {
             die("the curret route format is /app/class/action");
         } else {
-            header("Location:/errors/404.html");
+            notFound();
         }
         // ... 404 Not Found
         break;
@@ -63,6 +63,7 @@ switch ($routeInfo[0]) {
         $action = 'action' . join(array_map("ucfirst", !isset($action) ? ["index"] : explode('_', $action)));
         // die($action);
         call_user_func_array(array(new $class, $action), $vars);
+        break;    
+        
 
-        break;
 }

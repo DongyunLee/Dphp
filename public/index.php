@@ -6,8 +6,6 @@
  * User: lidongyun@shuwang-tech.com
  * Date: 2017/8/29
  */
-// 调试模式开关
-define('DEBUG', true);
 
 // 定义常用位置
 define("ROOT", str_replace('\\', '/', dirname(__DIR__)));

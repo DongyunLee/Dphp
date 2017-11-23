@@ -10,9 +10,10 @@ $config = require_once CONF . '/config.php';
 $config['db'] = require_once CONF . '/db.php';
 $config['waf'] = require_once CONF . '/waf.php';
 
-if (!$config['DEBUG'])
+define('DEBUG', $config['DEBUG']);
+if (!DEBUG)
     error_reporting(0);
-
 if ($config['SESS_STATE'])
     session_start();
-
+if(!DEBUG)
+    set_error_handler("notFound");
