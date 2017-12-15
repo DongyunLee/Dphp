@@ -13,7 +13,6 @@ $config['waf'] = require_once CONF . '/waf.php';
 define('DEBUG', $config['DEBUG']);
 if (!DEBUG)
     error_reporting(0);
-if ($config['SESS_STATE'])
-    session_start();
+    
 if(!DEBUG)
     set_error_handler("notFound");

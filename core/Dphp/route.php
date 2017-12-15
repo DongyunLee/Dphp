@@ -11,7 +11,7 @@ use function FastRoute\simpleDispatcher;
 
 // 配置路由
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-    $r->get("/[/]", 'Index/index');
+    $r->get("/[/]", 'Index/Index/index');
     $r->get("/{app}[/]", "app");
     $r->get("/{app}/{class}[/]", "class");
     $r->get("/{app}/{class}/{action}[/]", "action");
@@ -29,15 +29,14 @@ if (false !== $pos = strpos($uri, '?')) {
 // 对url进行转码
 $uri = rawurldecode($uri);
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
-// dump($routeInfo);die;
 switch ($routeInfo[0]) {
+    // 方法不存在
     case Dispatcher::NOT_FOUND:
         if (DEBUG) {
             die("the curret route format is /app/class/action");
         } else {
-            notFound();
+            \notFound();
         }
-        // ... 404 Not Found
         break;
     case Dispatcher::METHOD_NOT_ALLOWED:
         $allowedMethods = $routeInfo[1];
@@ -46,22 +45,26 @@ switch ($routeInfo[0]) {
         break;
     case Dispatcher::FOUND:
         $handler = $routeInfo[1];
-
         $vars = $routeInfo[2];
         // 通过$vars调用$handler
         if (empty($vars)) {
-            list($class, $action) = explode("/", $handler, 3);
+            list($app,$class, $action) = explode("/", $handler, 3);
         } else {
-            foreach ($vars as $key => $value) {
+            foreach ($vars as $key => $value) 
                 $$key = $value;
-            }
         }
+        $_SESSION['route'] = [
+            'app'   =>  $app,
+            'class' =>  $class,
+            'action'=>  $action,
+        ];
+        
         $app = "App\\" . ucfirst(!isset($app) ? "Index" : $app) . '\\controller\\';
-        // echo $app.'<br/>';
-        $class = $app . ucfirst(!isset($class) ? "Index" : $class) . "Controller";
-        // echo $class.'<br/>';
+        $class = $app.ucfirst(!isset($class) ? "Index" : $class) . "Controller";
         $action = 'action' . join(array_map("ucfirst", !isset($action) ? ["index"] : explode('_', $action)));
-        // die($action);
+        $_SESSION['route']['route'] = $class;
+        
+        // 调用不存在的类下的方法时，使用自定义错误进行处理
         call_user_func_array(array(new $class, $action), $vars);
         break;    
         

@@ -7,6 +7,5 @@
  * Date: 2017/8/30
  */
 return [
-    'SESS_STATE' => TRUE,
     'DEBUG' => TRUE
 ];

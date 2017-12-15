@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * 前台控制器
  * controllers\HomeController
  * HomeController.class.php - Dphp
  *
@@ -29,7 +30,6 @@ class HomeController extends Controller
             dump($value);
         }
         echo '<code>' . __METHOD__ . '</code>';
-        // $view = View::index();
     }
 
 }

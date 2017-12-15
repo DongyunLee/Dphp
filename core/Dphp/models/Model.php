@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * 模型核心类
  * Model.class.php - Dphp
  * User: lidongyun@shuwang-tech.com
  * Date: 2017/8/31

@@ -15,6 +15,9 @@ class Controller
 
     public $dMol;
 
+    /**
+     * 加载并初始化模型
+     */
     public function __construct()
     {
         $this->dMol = $this->dMol();
@@ -51,11 +54,14 @@ class Controller
      * @param string $app
      * @return void
      */
-    protected function display($html = 'index', $app = 'index')
+    protected function display($html = '', $app = '')
     {
+        $route = $_SESSION['route'];
+        $html = empty($html)?$route['class'].'/'.$route['action']:$html;
+        $app = empty($app) ? $route['app'] : $app ;
         $templete = strtolower($html);
         $app = ucfirst($app);
-        \Views\View::display($html, $app);
+        \Views\View::display($templete, $app);
     }
 
     /**
