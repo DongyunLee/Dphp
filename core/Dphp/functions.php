@@ -31,7 +31,7 @@ function dump($params)
  * @param mixed $params
  * @return void
  */
-function dd($params)
+/*function dd($params)
 {
     echo '<hr />';
     echo '<div style="background:lightblue;text-align:center;width:50%;margin:0 auto">';
@@ -46,7 +46,7 @@ function dd($params)
     }
     echo '</div>';
     echo '<hr />';
-}
+}*/
 
 /**
  * 获取变量定义时的变量名

@@ -12,5 +12,6 @@ return [
     'db' => 'mysql',
     'host' => 'localhost',
     'db_name' => 'dphp',
-    'charset' => 'utf8mb4'
+    'charset' => 'utf8mb4',
+    'prefix'=>''
 ];

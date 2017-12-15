@@ -21,6 +21,7 @@ class Model
     public static $db_name;
     public static $charset;
     public static $db;
+    public static $prefix;
 
     public function __construct()
     {
@@ -32,12 +33,13 @@ class Model
         self::$db_name = $db['db_name'];
         self::$charset = $db['charset'];
         self::$db = $db['db'];
+        self::$prefix = $db['prefix'];
     }
 
     /**
      * D-Model-OnLine
      * 即连接数据库操作
-     * @return void
+     * @return PDO|void
      */
     public function dMol()
     {
@@ -55,6 +57,10 @@ class Model
         return $dbh;
     }
 
+    /**
+     * 建立数据库链接
+     * @return PDO
+     */
     private static function Connection()
     {
         $dsn = self::$db . ':host=' . self::$host . ';dbname=' . self::$db_name . ';charset=' . self::$charset;
