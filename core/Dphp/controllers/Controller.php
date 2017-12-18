@@ -53,18 +53,15 @@ class Controller
     /**
      * 渲染视图
      * @param string $html
-     * @param string $app
      * @return void
      * @throws ErrorException
      */
-    protected function display($html = '', $app = '')
+    protected function display($html = '')
     {
         $route = $_SESSION['route'];
         $html = empty($html) ? $route['class'] . '/' . $route['action'] : $html;
-        $app = empty($app) ? $route['app'] : $app;
         $templete = strtolower($html);
-        $app = ucfirst($app);
-        View::display($templete, $app);
+        View::display($templete);
     }
 
     /**

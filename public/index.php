@@ -8,21 +8,11 @@
  */
 
 // 定义常用位置
-define("ROOT", str_replace('\\', '/', dirname(__DIR__)));
+define('ROOT', str_replace('\\', '/', dirname(__DIR__)));
+define("DPHP", ROOT . '/core/Dphp');
 
-define("APP", ROOT . '/app');
-define("CONF", ROOT . '/config');
-define('CORE', ROOT . '/core');
-define("VENDOR", CORE . '/vendor');
-define("DPHP", CORE . '/Dphp');
-define('PUB', ROOT . '/public');
-define('CACHE', PUB . '/caches');
-
-// 加载composer自动加载文件
-require_once(VENDOR . '/autoload.php');
-
-// 加载配置文件
-require_once(DPHP . '/config.php');
+// 运行框架启动器
+require_once DPHP . '/bootstrap.php';
 
 // 加载调用了fast-route的route配置文件
 require_once(DPHP . '/route.php');

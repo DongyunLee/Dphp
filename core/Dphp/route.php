@@ -1,72 +1,83 @@
 <?php
-
-/** 路由规则
+/**
+ * 核心路由查找器
  * Name: route.php-Dphp
- * User: lidongyun@shuwang-tech.com
- * Date: 2017/8/29
+ * Author: lidongyun@shuwang-tech.com
+ * Date: 2017/12/18
+ * Time: 13:54
  */
-use FastRoute\Dispatcher;
+
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
-// 配置路由
+/** @var object $dispatcher 导入配置中的路由规则 */
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-    $r->get("/[/]", 'Index/Index/index');
-    $r->get("/{app}[/]", "app");
-    $r->get("/{app}/{class}[/]", "class");
-    $r->get("/{app}/{class}/{action}[/]", "action");
+    foreach ($GLOBALS['routeConfig'] as $key => $value) {
+        if ($key) {
+            $r->addGroup($key, function (RouteCollector $r) use ($key, $value) {
+                foreach ($value as $k => $v) {
+                    // 如果控制器配置项为空时，默认根据路由获取控制器
+                    if (empty($v[2])){
+                        $v[2] = substr($v[1],1).'Controller';
+                    }
+                    $v[2] = substr($key,1).ucfirst($v[2]);
+                    $r->addRoute($v[0], $v[1], $v[2]);
+                }
+            });
+        } else {
+            foreach ($value as $k => $v) {
+                if (empty($v[2])){
+                    $v[2] = $v[1].'Controller';
+                }
+                if (substr($v[2],0,1) == '/'){
+                    $v[2] = substr($v[2],1);
+                }
+                $r->addRoute($v[0], $v[1], $v[2]);
+            }
+        }
+
+    }
 });
 
-// 获取http传参方式和URI
+// 获取http传参方式和资源URI
 $httpMethod = $_SERVER['REQUEST_METHOD'];
-$uri = strtolower($_SERVER['REQUEST_URI']);
+$uri = $_SERVER['REQUEST_URI'];
 
-// 将url中的get传参方式（?foo=bar）剥离并进行解析(即不允许使用?foo=bar形式传参)
+// 将url中的get传参方式（?foo=bar）剥离并对URI进行解析
 if (false !== $pos = strpos($uri, '?')) {
     $uri = substr($uri, 0, $pos);
 }
-
-// 对url进行转码
 $uri = rawurldecode($uri);
+
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 switch ($routeInfo[0]) {
-    // 方法不存在
-    case Dispatcher::NOT_FOUND:
-        if (DEBUG) {
-            die("the curret route format is /app/class/action");
-        } else {
-            \notFound();
-        }
+    case FastRoute\Dispatcher::NOT_FOUND:
+        // 使用未定义路由格式
         break;
-    case Dispatcher::METHOD_NOT_ALLOWED:
+    case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         $allowedMethods = $routeInfo[1];
-        // ... 403 Method Not Allowed
-        echo 403;
+        // ... 405 Method Not Allowed
+        /**
+         * The HTTP specification requires that a405 Method Not Allowedresponse include theAllow:
+         * header to detail available methods for the requested resource.
+         * Applications using FastRouteshould use the second array element to add this header when relaying a 405 response.
+         * 请求的HTTP⽅法与配置的不符合
+         */
         break;
-    case Dispatcher::FOUND:
+    case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
+        $class = '\app\controller\\'.ucfirst($handler);
         $vars = $routeInfo[2];
-        // 通过$vars调用$handler
-        if (empty($vars)) {
-            list($app,$class, $action) = explode("/", $handler, 3);
-        } else {
-            foreach ($vars as $key => $value) 
-                $$key = $value;
-        }
+        $action = 'action'.ucfirst(isset($vars['action'])?$vars['action']:'index');
+        unset($vars['action']);
         $_SESSION['route'] = [
-            'app'   =>  $app,
-            'class' =>  $class,
-            'action'=>  $action,
+            'class' => substr($handler,0,strpos(strtolower($handler),'controller')),
+            'action'=> strtolower(substr($action,6))
         ];
-        
-        $app = "App\\" . ucfirst(!isset($app) ? "Index" : $app) . '\\controller\\';
-        $class = $app.ucfirst(!isset($class) ? "Index" : $class) . "Controller";
-        $action = 'action' . join(array_map("ucfirst", !isset($action) ? ["index"] : explode('_', $action)));
-        $_SESSION['route']['route'] = $class;
-        
-        // 调用不存在的类下的方法时，使用自定义错误进行处理
-        call_user_func_array(array(new $class, $action), $vars);
-        break;    
-        
-
+        // ... 调用$handler和$vars
+        call_user_func_array([
+            new $class,
+            $action
+        ],$vars);
+        break;
 }

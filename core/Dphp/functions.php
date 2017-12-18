@@ -52,7 +52,7 @@ function dump($params)
  * 获取变量定义时的变量名
  * @param mixed  $var
  * @param mixed  $scope
- * @return void
+ * @return false|int|string
  */
 function get_variable_name(&$var, $scope = NULL)
 {
@@ -68,10 +68,14 @@ function get_variable_name(&$var, $scope = NULL)
 
 /**
  * 不存在时的错误处理
+ * @param bool $errno
+ * @param bool $errstr
  * @return void
  */
 function notFound($errno=TRUE, $errstr=TRUE)
 {
+    $_SESSION['errno'] = $errno;
+    $_SESSION['error'] = $errstr;
     header("Location:/errors/404.html");
 }
 

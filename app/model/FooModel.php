@@ -6,7 +6,7 @@
  * Time: 20:48
  */
 
-namespace app\Index\model;
+namespace app\model;
 
 use models\DoctrineModel;
 

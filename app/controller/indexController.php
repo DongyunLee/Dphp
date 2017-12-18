@@ -7,25 +7,28 @@
  * Date: 2017/11/24
  */
 
-namespace App\Index\controller;
+namespace app\controller;
 
-use app\Index\model\Foo;
+// use app\model\Foo;
 use Controllers\HomeController;
 
 class IndexController extends HomeController
 {
+    /**
+     * @throws \ErrorException
+     */
     public function actionIndex()
     {
-        $array = Foo::all()->toArray();
+        /*$array = Foo::all()->toArray();
         foreach ($array as $key => $value) {
             dump($value);
-        }
-        /*$titles = ['title1'=>'DoyleafPHP！','title2'=>'dphp'];
+        }*/
+        $titles = ['title1'=>'DoyleafPHP！','title2'=>'dphp'];
 
         $this->assign($titles);
         $this->assign('content','Hello,Dphp');
 
-        $this->display();*/
+        $this->display();
     }
 
 }

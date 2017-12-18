@@ -9,6 +9,8 @@
 
 namespace Views;
 
+use ErrorException;
+
 class View
 {
     public static $params = [];
@@ -19,17 +21,16 @@ class View
 
     /**
      * 渲染视图
-     * @param   string    $templete   模板名
-     * @param   string    $app        应用名
+     * @param   string $templete 模板名
      * @return  void
+     * @throws ErrorException
      */
-    public static function display($templete, $app='index')
+    public static function display($templete)
     {
         // 读取自定义的模板文件
-        $handle = APP.'/'.$app.'/view/'.$templete.'.html';
-        $assets_handle = \dirname($handle);
+        $handle = APP . '/view/' . $templete . '.html';
         if (!file_exists($handle)) {
-            throw new \ErrorException("模板文件不存在", 301);
+            throw new ErrorException("模板文件不存在", 301);
             exit();
         }
         $templeteContent = htmlspecialchars(file_get_contents($handle));
@@ -37,24 +38,23 @@ class View
 
         // 绑定变量
         foreach (self::$params as $key => $value) {
-            $tempConReplace = str_replace('{$'.$key.'}', $value, $tempConReplace);
+            $tempConReplace = str_replace('{$' . $key . '}', $value, $tempConReplace);
         }
         $assets = [
-            'js/','css/','img/','fonts/'
+            'js/', 'css/', 'img/', 'fonts/'
         ];
-        $route = $_SESSION['route'];
         foreach ($assets as $key => $value) {
-            $tempConReplace = str_replace($value,$assets_handle.'/'.$value,$tempConReplace);
+            $tempConReplace = str_replace($value, $value, $tempConReplace);
         }
         $tempConReplace_new = htmlspecialchars_decode($tempConReplace);
 
         // 写入缓存文件
-        $cache_fileName = CACHE."/{$app}/{$templete}.html";
+        $cache_fileName = CACHE . "/{$templete}.html";
         $cache_dir = dirname($cache_fileName);
-        if (!file_exists($cache_dir)){
-            mkdir ($cache_dir,0777,true);
+        if (!file_exists($cache_dir)) {
+            mkdir($cache_dir, 0777, true);
         }
-        file_put_contents($cache_fileName,$tempConReplace_new);
+        file_put_contents($cache_fileName, $tempConReplace_new);
 
         echo $tempConReplace_new;
     }
