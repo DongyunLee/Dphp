@@ -9,14 +9,17 @@
 
 namespace App\Index\controller;
 
+use app\Index\model\Foo;
 use Controllers\HomeController;
-use Models\EloquentModel;
 
 class IndexController extends HomeController
 {
     public function actionIndex()
     {
-        $model = new EloquentModel();
+        $array = Foo::all()->toArray();
+        foreach ($array as $key => $value) {
+            dump($value);
+        }
         /*$titles = ['title1'=>'DoyleafPHP！','title2'=>'dphp'];
 
         $this->assign($titles);
@@ -24,5 +27,5 @@ class IndexController extends HomeController
 
         $this->display();*/
     }
-    
+
 }

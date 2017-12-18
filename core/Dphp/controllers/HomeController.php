@@ -11,8 +11,6 @@
 
 namespace Controllers;
 
-use Views\View;
-
 class HomeController extends Controller
 {
 
@@ -23,12 +21,7 @@ class HomeController extends Controller
 
     public function actionIndex()
     {
-        /*$sql = "SELECT * FROM foo";
-        $result = $this->dMol->query($sql);
-        $array = $result->fetchAll();
-        foreach ($array as $key => $value) {
-            dump($value);
-        }*/
+
         echo '<code>' . __METHOD__ . '</code>';
     }
 

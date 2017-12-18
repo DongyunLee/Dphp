@@ -8,7 +8,9 @@
 
 namespace Controllers;
 
-use Models\Model;
+use ErrorException;
+use Models\EloquentModel;
+use Views\View;
 
 class Controller
 {
@@ -23,29 +25,29 @@ class Controller
         $this->dMol = $this->dMol();
     }
 
-    public function __call($action, $params)
-    {
-        if (DEBUG) {
-            throw new \ErrorException('访问的方法'.$action.'不存在！');
-        } else {
-            \notFound();
-        }
-        
-    }
-
     /**
      * 连接数据库
-     * @return void
+     * @return object
      */
     public function dMol()
     {
-        $model = new Model;
+        $model = new EloquentModel();
         return $model->dMol();
     }
 
-    private function waf()
+    /**
+     * @param $action
+     * @param $params
+     * @throws ErrorException
+     */
+    public function __call($action, $params)
     {
-        require_once '';
+        if (DEBUG) {
+            throw new ErrorException('访问的方法' . $action . '不存在！');
+        } else {
+            \notFound();
+        }
+
     }
 
     /**
@@ -53,28 +55,28 @@ class Controller
      * @param string $html
      * @param string $app
      * @return void
+     * @throws ErrorException
      */
     protected function display($html = '', $app = '')
     {
         $route = $_SESSION['route'];
-        $html = empty($html)?$route['class'].'/'.$route['action']:$html;
-        $app = empty($app) ? $route['app'] : $app ;
+        $html = empty($html) ? $route['class'] . '/' . $route['action'] : $html;
+        $app = empty($app) ? $route['app'] : $app;
         $templete = strtolower($html);
         $app = ucfirst($app);
-        \Views\View::display($templete, $app);
+        View::display($templete, $app);
     }
 
     /**
      * 绑定变量
-     * @param string $name      模板中的变量名
-     * @param array  $name      当$params为空时可以是值
-     * @param mixed  $params
+     * @param string|array $name 当$params为空时可以是值
+     * @param mixed $params
      * @return void
      */
     protected function assign($name, $params = '')
     {
         $params = empty($params) ? $name : $params;
-        \Views\View::assign($name, $params);
+        View::assign($name, $params);
     }
 
     /**

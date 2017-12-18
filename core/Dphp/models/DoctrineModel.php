@@ -6,9 +6,7 @@
  * Time: 20:41
  */
 
-namespace core\Dphp\models;
-
-use Models\Model;
+namespace models;
 
 class DoctrineModel extends Model
 {

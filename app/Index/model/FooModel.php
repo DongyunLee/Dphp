@@ -6,9 +6,9 @@
  * Time: 20:48
  */
 
-namespace app\Index;
+namespace app\Index\model;
 
-use core\Dphp\models\DoctrineModel;
+use models\DoctrineModel;
 
 class FooModel extends DoctrineModel
 {
