@@ -8,7 +8,7 @@
  */
 return [
     "user" => 'root',
-    'pass' => '',
+    'pass' => 'Mao+690629',
     'db' => 'mysql',
     'host' => 'localhost',
     'db_name' => 'dphp',
