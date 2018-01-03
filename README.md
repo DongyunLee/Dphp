@@ -12,7 +12,6 @@
 使用 **[Packagist / Composer中国全量镜像](https://packagist.phpcomposer.com)**
 ## 路由
 采用开源的nikic/fast-route路由，这个路由自称是最快的路由。
-> yourdomain.com/app/controller/action
 ## 入口文件
 >/public/index.php
 ## 安装方式
