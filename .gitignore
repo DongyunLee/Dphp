@@ -4,5 +4,5 @@
 /nbproject/
 /public/caches/
 /composer.lock
-/config/db.php
+config/db.php
 .user.ini
