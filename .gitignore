@@ -5,3 +5,4 @@
 /public/caches/
 /composer.lock
 /config/db.php
+.user.ini
