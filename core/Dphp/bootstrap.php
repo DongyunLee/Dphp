@@ -9,6 +9,9 @@
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
+define("ROOT", dirname(dirname(__DIR__)));
+define("DPHP", ROOT . '/core/Dphp');
+
 // 定义应用目录
 define("APP", ROOT . '/app');
 

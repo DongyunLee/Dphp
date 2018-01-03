@@ -16,4 +16,4 @@
 ## 入口文件
 >/public/index.php
 ## 安装方式
-> composer create-project doylee/dphp Dphp
+> composer create-project doylee/dphp <你的项目名>
