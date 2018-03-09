@@ -31,26 +31,46 @@ html{
 	background: #000000;
 }
 .indexBox{
-	width: 90%;
+	width: 100%;
 	background: #000000;
-	margin: 1rem auto;
+	margin: 2rem auto;
 }
-
+.dimg{
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20%;
+}
 @font-face {
 	font-family:indexFont;
 	src: url(../fonts/lixu.ttf);
 }
-
 .indexBox ul li{
 	margin-top: 20px;
 	text-align: center;
+	
+	border-radius: 4px;
+	padding: 8px 0;
 }
+
+
+
 .indexBox ul li a{
 	font-family: indexFont;
 	color: #FFFFFF;
-	font-size: 0.45rem;
+	font-size:20px;
 	transition: all .5s ;
 }
 .indexBox ul li a:hover{
 	color: green;
+}
+@media screen and (min-width: 970px) {
+   .indexBox ul li a{
+	font-size:24px;
+}
+.dimg{
+	margin-top: 0;
+	width: 70%;
+	
+}
 }
